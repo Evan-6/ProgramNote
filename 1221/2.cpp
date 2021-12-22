@@ -2,6 +2,7 @@
 #include<vector>
 #include<algorithm>
 using namespace std;
+#define StartNode 0
 struct Node  //作為資料結構儲存圖
 {
 	int start;
@@ -9,10 +10,7 @@ struct Node  //作為資料結構儲存圖
 	int length;
 };
 bool compare(Node a, Node b)
-{	
-	if(a.start==0||a.end==0)return true;
-	if(b.start==0||b.end==0)return false;
-	
+{
 	return a.length < b.length;
 }
 void Kruskal(vector<Node> &arr, vector<bool> &visited)
@@ -31,7 +29,7 @@ void Kruskal(vector<Node> &arr, vector<bool> &visited)
 	}
 	int weight = 0;
 	//cout<<endl<<endl;
-	visited[0]=true;
+	visited[StartNode]=true;
 	for (int i = 0; i < N; i++)
 	{
 		if (visited[arr[i].start]!=visited[arr[i].end])
@@ -40,7 +38,7 @@ void Kruskal(vector<Node> &arr, vector<bool> &visited)
 			//cout<< arr[i].start<<" "<< arr[i].end<<" "<<arr[i].length<<"\n";
 			visited[arr[i].start] = true;
 			visited[arr[i].end] = true;
-			i=0;
+			i=-1;
 		}
 	}
 	cout << weight;
