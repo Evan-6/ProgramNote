@@ -45,3 +45,42 @@ int main(){
 	}
 	printf("%d",add(a,m,n));
 } 
+
+
+
+#include<cstdio>
+#include<cstdlib>
+void add(int **a,int **b,int m,int n){
+	int sum=0;
+	for(int i=0;i<m;i++){
+		for(int j=0;j<n;j++){
+			a[i][j]+=b[i][j];
+		}
+	}
+}
+int main(){
+	int m,n;
+	scanf("%d%d",&m,&n);
+	int **a=(int **)malloc(sizeof(int *)* m);
+	for(int i=0;i<m;i++)a[i]=(int *)malloc(sizeof(int)* n);
+	int **b=(int **)malloc(sizeof(int *)* m);
+	for(int i=0;i<m;i++)b[i]=(int *)malloc(sizeof(int)* n);
+
+	for(int i=0;i<m;i++){
+		for(int j=0;j<n;j++){
+            scanf("%d",&a[i][j]);
+        }
+	}
+	puts("ENTER B:\n");
+	for(int i=0;i<m;i++){
+		for(int j=0;j<n;j++){
+            scanf("%d",&b[i][j]);
+        }
+	}
+	add(a,b,m,n);
+	for(int i=0;i<m;i++){
+		for(int j=0;j<n;j++){
+            printf("%d ",a[i][j]);
+        }
+	}
+} 
